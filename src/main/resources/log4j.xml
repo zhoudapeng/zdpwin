@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <appender name="accessAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="File" value="${catalina.base}/logs/access.log" /><!-- 设置日志输出文件名 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="bizAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="File" value="${catalina.base}/logs/biz.log" /><!-- 设置日志输出文件名 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="warnAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="File" value="${catalina.base}/logs/warn.log" /><!-- 设置日志输出文件名 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="rpcAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <param name="File" value="${catalina.base}/logs/rpc.log" /><!-- 设置日志输出文件名 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+        </layout>
+    </appender>
+
+    <logger name="access" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="accessAppender" />
+    </logger>
+
+    <logger name="biz" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="bizAppender" />
+    </logger>
+
+    <logger name="warn" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="warnAppender" />
+    </logger>
+
+    <logger name="rpc" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="rpcAppender" />
+    </logger>
+
+    <!-- 根logger的设置 -->
+    <root>
+        <level value="warn" />
+        <appender-ref ref="warnAppender" />
+    </root>
+</log4j:configuration>
